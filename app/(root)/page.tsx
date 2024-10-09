@@ -6,6 +6,8 @@ import React from "react";
 const Home = () => {
   const loggedIn = {
     firstName: "Flavius",
+    lastName: "Cojocaru",
+    email: "flaviuscojocaru19@gmail.com",
   };
 
   return (
@@ -28,7 +30,11 @@ const Home = () => {
         RECENT TRANSACTIONS
       </div>
 
-      <RightSidebar user={loggedIn} transactions={[]} banks={[]} />
+      <RightSidebar
+        user={loggedIn}
+        transactions={[]}
+        banks={[{ currentBalance: 123.5 }, { currentBalance: 500.6 }]}
+      />
     </section>
   );
 };
