@@ -14,12 +14,12 @@ import "./globals.css";
 //   weight: "100 900",
 // });
 
-const inter: any = Inter({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 });
 
-const ibmPlexMono: any = IBM_Plex_Serif({
+const ibmPlexMono = IBM_Plex_Serif({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-ibm-plex-serif",
