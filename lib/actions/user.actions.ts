@@ -33,8 +33,8 @@ export const signIn = async ({ email, password }: signInProps) => {
   }
 };
 
-export const signUp = async (userData: SignUpParams) => {
-  const { email, password, firstName, lastName } = userData;
+export const signUp = async ({ password, ...userData }: SignUpParams) => {
+  const { email, firstName, lastName } = userData;
   const name = `${firstName} ${lastName}`;
 
   let newUserAccount;
@@ -113,7 +113,7 @@ export const createLinkToken = async (user: User) => {
       user: {
         client_user_id: user.$id,
       },
-      client_name: user.name,
+      client_name: `${user.firstName} ${user.lastName}`,
       products: ["auth"] as Products[],
       country_codes: ["US"] as CountryCode[],
       language: "en",
@@ -192,7 +192,7 @@ export const exchangePublicToken = async ({
 
     // Create a funding source URL for the account using the Dwolla customer ID, processor token, and bank name
     const fundingSourceUrl = await addFundingSource({
-      dwollaCustomerId: user.dwollaCustomerId,
+      dwollaCustomerId: user.dwollaCustomerId!,
       processorToken,
       bankName: accountData.name,
     });
